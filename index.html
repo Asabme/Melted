@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE UNIVERSE | MY FAVORITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&family=Inter:wght@200;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root { --bg: #ffffff; --text: #1a1a1a; --accent: #8e7d5a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
+
+        #loader { position: fixed; inset: 0; background: #fff; z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 1.5s ease-in-out; }
+        #start-btn { background: none; border: 1px solid var(--text); padding: 15px 40px; font-family: 'Playfair Display'; font-style: italic; cursor: pointer; font-size: 1.1rem; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .section { margin-bottom: 120px; opacity: 0; transform: translateY(20px); transition: 1.5s all ease-out; }
+        .section.visible { opacity: 1; transform: translateY(0); }
+
+        h1 { font-family: 'Playfair Display'; font-size: clamp(2rem, 7vw, 4rem); font-weight: 400; margin-bottom: 30px; line-height: 1.1; }
+        .italic { font-style: italic; color: var(--accent); }
+
+        /* Fail-Safe Video Container */
+        .media-box { width: 100%; margin: 40px 0; background: #f0f0f0; position: relative; overflow: hidden; }
+        video { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        .epistle { font-size: 1.2rem; color: #333; text-align: justify; margin-top: 30px; font-weight: 200; }
+        #fav-btn { width: 100%; padding: 25px; background: var(--text); color: #fff; border: none; font-family: 'Playfair Display'; font-size: 1.5rem; font-style: italic; cursor: pointer; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <button id="start-btn" onclick="begin()">Enter Softly</button>
+    </div>
+
+    <audio id="audio" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+    <div class="container">
+        <div class="section">
+            <p style="color: var(--accent); letter-spacing: 3px;">01 / 05</p>
+            <h1>To the person I love <span class="italic">most</span> in the world.</h1>
+            <div class="media-box"><img src="photo1.jpg" style="width:100%;"></div>
+            <div class="epistle">
+                They say the universe is vast and impossible to measure, but I have realized that the universe is not just stars and galaxies. Sometimes, the universe is just a person who makes the world feel a little bit more balanced. You are that person for me. Even though we have never met in real life and even though we have not had those sweet moments in person yet, I find myself looking forward to them more than anything else. You are the person I value most in this entire world, and I wanted to create something that reflects how much your presence means to me.
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>The <span class="italic">Reality</span>.</h1>
+            <div class="media-box">
+                <video autoplay loop muted playsinline poster="photo1.jpg">
+                    <source src="video1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="epistle">
+                I know the reality of our situation. I am 21 and you are 30 plus. There is a world of experience between us, and I respect every bit of the woman you have become. You carry an elegance and a strength that I truly admire. I am not here to move too fast or to pretend we are something we are not. I just want to be the one who brings a smile to your face when your day is heavy. I want to be the one who celebrates your steeze and reminds you of how incredible you are, even from a distance.
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>The <span class="italic">Connection</span>.</h1>
+            <div class="media-box" style="max-width: 400px; margin: 40px auto;"><img src="photo2.jpg" style="width:100%;"></div>
+            <div class="epistle">
+                You have this unique talent for being the smartest person in the room while still having a spirit that feels so light. Your laugh is my favorite thing to hear, and even though we are miles apart, it is the one thing that can calm my chaos. You are not just a friend; you have become my favorite person. I want to be in your corner, celebrating your wins and being a steady presence in your life. I am giving you this little piece of my world today just to see you smile.
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Future <span class="italic">Days</span>.</h1>
+            <div class="media-box">
+                <video autoplay loop muted playsinline poster="photo2.jpg">
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="epistle">
+                I want us to build a connection that is so genuine and so supportive that we do not need to define it by anyone else's rules. I want to be the one who finally closes the distance between us one day, not to force a story, but to finally see that smile in person. I look forward to the day we finally sit across from each other, when the screen is not there anymore, and I can see the light in your eyes for real. Until then, I am content being your biggest fan from afar.
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Final <span class="italic">Thoughts</span>.</h1>
+            <div class="media-box"><img src="photo3.jpg" style="width:100%;"></div>
+            <div class="epistle" style="text-align: center;">
+                For now, I just want to know that I can officially call you my favorite person forever. No pressure, no faking, just a permanent spot in my heart for someone I truly cherish. Age is just a number but the way you make me feel is a reality I cannot ignore. You are my favorite person, my peace, and my inspiration.
+            </div>
+            <button id="fav-btn" onclick="complete()">YES, FOREVER ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        function begin() {
+            document.getElementById('loader').style.opacity = '0';
+            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1000);
+            document.getElementById('audio').play();
+            // Force play videos after user interaction
+            document.querySelectorAll('video').forEach(v => v.play());
+        }
+
+        function complete() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#1a1a1a', '#8e7d5a'] });
+            setTimeout(() => {
+                window.open("https://wa.me/2348167789416?text=YES%20to%20being%20your%20favorite%20person%20forever!%20❤️");
+            }, 2000);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+
